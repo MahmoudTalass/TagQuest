@@ -6,12 +6,10 @@ export function GamePage() {
    const [y, setY] = useState();
 
    function handleClick(e) {
-      const rect = e.target.getBoundingClientRect();
-      const xcoord = e.clientX - rect.left; //x position within the element.
-      const ycoord = e.clientY - rect.top; //y position within the element.
-      console.log("Left? : " + x + " ; Top? : " + y + ".");
-      setX(xcoord);
-      setY(ycoord);
+      const { width, height } = e.target.getBoundingClientRect();
+      const { offsetX, offsetY } = e.nativeEvent;
+      setX(Math.round((offsetX / width) * 100));
+      setY(Math.round((offsetY / height) * 100));
    }
 
    return (
