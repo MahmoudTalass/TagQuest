@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "./layout/Layout";
+import { GamePage } from "./GamePage";
 
 export const router = createBrowserRouter([
    {
@@ -12,7 +13,7 @@ export const router = createBrowserRouter([
          },
          {
             path: "/gameplay",
-            element: <></>,
+            element: <GamePage />,
          },
       ],
    },
