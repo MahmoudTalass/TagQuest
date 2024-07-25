@@ -5,6 +5,7 @@ import { jwtDecode } from "jwt-decode";
 import { Buffer } from "buffer";
 import { WinScreen } from "./WinScreen";
 import { formatTime } from "./timeFormatter";
+import { Link } from "react-router-dom";
 
 export function GamePage() {
    const image = useRef(null);
@@ -181,20 +182,22 @@ export function GamePage() {
 
    return (
       <section className="relative">
-         <div className="flex p-4 justify-between">
-            <p>time passed: {formatTime(seconds)}</p>
-            <div className="flex justify-center items-center">
-               Find the following:
+         <div className="flex px-4 justify-between gap-10 items-center p-2">
+            <Link className="text-2xl" to="/">
+               Home
+            </Link>
+            <p className="text-2xl font-bold">{formatTime(seconds)}</p>
+            <div className="flex justify-center items-center gap-5">
                {characters.map((character) => {
                   return (
                      <div
                         key={character._id}
-                        className={`p-3 ${character.found ? "opacity-40" : "opacity-100"}`}
+                        className={` ${character.found ? "opacity-40" : "opacity-100"}`}
                      >
                         <img
                            src={character.image}
                            alt={`image of $character.name}`}
-                           className="w-12"
+                           className="size-24 object-contain"
                         />
                      </div>
                   );
