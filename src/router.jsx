@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "./layout/Layout";
 import { GamePage } from "./GamePage";
+import { StartPage } from "./StartPage";
 
 export const router = createBrowserRouter([
    {
@@ -9,7 +10,7 @@ export const router = createBrowserRouter([
       children: [
          {
             index: true,
-            element: <></>,
+            element: <StartPage />,
          },
          {
             path: "/gameplay",
