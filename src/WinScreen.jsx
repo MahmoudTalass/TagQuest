@@ -3,6 +3,8 @@ import { formatTime } from "./timeFormatter";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const MAX_NAME_LENGTH = 40;
+
 function WinScreen({ tokenContent, token }) {
    const [name, setName] = useState("");
    const [error, setError] = useState(null);
@@ -35,8 +37,6 @@ function WinScreen({ tokenContent, token }) {
 
          setLoading(false);
          setError(null);
-         setToken(null);
-         setTokenContent(null);
          navigate("/leaderboard");
       } catch (err) {
          setLoading(false);
@@ -66,14 +66,20 @@ function WinScreen({ tokenContent, token }) {
                <label htmlFor="name" className="text-lg">
                   Enter your name to record your score
                </label>
-               <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  className="w-full bg-color2 p-1 rounded-md"
-                  onChange={handleNameChange}
-                  required
-               />
+               <div className="flex items-center gap-2 w-full">
+                  <input
+                     type="text"
+                     name="name"
+                     id="name"
+                     className="w-full bg-color2 p-1 rounded-md"
+                     onChange={handleNameChange}
+                     required
+                     maxLength={MAX_NAME_LENGTH}
+                  />
+                  <span className={`${name.trim().length === MAX_NAME_LENGTH && "text-red-500"}`}>
+                     {name.trim().length}
+                  </span>
+               </div>
                <button type="submit" disabled={loading}>
                   Submit
                </button>
