@@ -30,7 +30,7 @@ export function StartPage() {
             <div className="w-full max-w-[700px] flex flex-col items-center p-8 gap-12">
                <div className="flex items-center w-full">
                   <h1 className="text-3xl font-bold grow ">Wecome to Tag Quest!</h1>
-                  <p>Leaderboard</p>
+                  <Link to="/leaderboard">Leaderboard</Link>
                </div>
 
                <div className="flex flex-col gap-8">
