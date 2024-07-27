@@ -71,7 +71,14 @@ export function GamePage() {
          });
 
          const json = await response.json();
-         console.log(json);
+
+         if (!response.ok) {
+            setToken(null);
+            setTokenContent(null);
+            setCharacters([]);
+            return setError(json.error.message);
+         }
+
          const hitTarget = json.hitTarget;
 
          const decodedToken = jwtDecode(json.token);
@@ -131,7 +138,6 @@ export function GamePage() {
             const decodedToken = jwtDecode(tokenJson.token);
             setToken(tokenJson.token);
             setTokenContent(decodedToken);
-            console.log(decodedToken);
             setCharacters(
                charactersJson.map((character) => {
                   return {
@@ -148,7 +154,6 @@ export function GamePage() {
             setLoading(false);
          } catch (err) {
             if (controller.signal.aborted) return;
-            console.log(err);
             setError("Something went wrong. Please try again later.");
             setLoading(false);
          }
@@ -229,7 +234,9 @@ export function GamePage() {
                               <li
                                  className="hover:bg-color2 p-2 rounded-lg flex items-center gap-2"
                                  key={character._id}
-                                 onClick={() => checkAttempt(character._id)}
+                                 onClick={() => {
+                                    checkAttempt(character._id);
+                                 }}
                               >
                                  <img
                                     src={character.image}
@@ -256,7 +263,7 @@ export function GamePage() {
                );
             })}
          </div>
-         {displayWin && <WinScreen tokenContent={tokenContent} />}
+         {displayWin && <WinScreen tokenContent={tokenContent} token={token} />}
          <p
             className={`fixed z-10 text-4xl top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-1000 text-red-600 ${
                displayMissedTargetMsg ? "opacity-100" : "opacity-0"
