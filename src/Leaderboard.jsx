@@ -100,21 +100,21 @@ export function Leaderboard() {
                <p>{error}</p>
             ) : (
                data.players.length > 0 && (
-                  <table className="w-full text-center">
+                  <table className="w-full text-center border-spacing-2 border-separate max-w-full">
                      <thead>
                         <tr>
-                           <th>Placement</th>
-                           <th>Name</th>
-                           <th>Score</th>
+                           <th className="border-b-[1px]">Placement</th>
+                           <th className="border-b-[1px]">Name</th>
+                           <th className="border-b-[1px]">Score</th>
                         </tr>
                      </thead>
                      <tbody>
                         {data.players.length > 0 &&
                            data.players.map((player, index) => {
                               return (
-                                 <tr key={player._id}>
+                                 <tr key={player._id} className="pt-2">
                                     <td>{(page - 1) * pageSize + (index + 1)}</td>
-                                    <td>{player.name}</td>
+                                    <td className="max-w-[250px] overflow-auto">{player.name}</td>
                                     <td>{formatTime(player.score)}</td>
                                  </tr>
                               );
