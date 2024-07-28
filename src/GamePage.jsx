@@ -62,7 +62,7 @@ export function GamePage() {
             xLocationRange,
             yLocationRange,
          };
-         const response = await fetch("http://localhost:3000/api/game/check-attempt", {
+         const response = await fetch("https://tagquestapi.fly.dev/api/game/check-attempt", {
             method: "POST",
             headers: {
                "content-type": "application/json",
@@ -115,11 +115,11 @@ export function GamePage() {
       async function startGame() {
          try {
             const [tokenResponse, charactersResponse] = await Promise.all([
-               fetch("http://localhost:3000/api/game/start", {
+               fetch("https://tagquestapi.fly.dev/api/game/start", {
                   method: "POST",
                   signal: controller.signal,
                }),
-               fetch("http://localhost:3000/api/characters", {
+               fetch("https://tagquestapi.fly.dev/api/characters", {
                   signal: controller.signal,
                }),
             ]);

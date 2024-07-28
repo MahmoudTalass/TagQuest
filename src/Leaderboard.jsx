@@ -26,7 +26,7 @@ export function Leaderboard() {
       setPage(pageNumber);
       try {
          const response = await fetch(
-            `http://localhost:3000/api/players?page=${pageNumber}&pageSize=${pageSize}`
+            `https://tagquestapi.fly.dev/api/players?page=${pageNumber}&pageSize=${pageSize}`
          );
 
          const json = await response.json();
@@ -52,7 +52,7 @@ export function Leaderboard() {
       async function fetchData() {
          try {
             const response = await fetch(
-               `http://localhost:3000/api/players?page=1&pageSize=${pageSize}`,
+               `https://tagquestapi.fly.dev/api/players?page=1&pageSize=${pageSize}`,
                {
                   signal: controller.signal,
                }

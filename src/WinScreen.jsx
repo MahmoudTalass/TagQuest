@@ -18,7 +18,7 @@ function WinScreen({ tokenContent, token }) {
       e.preventDefault();
       setLoading(true);
       try {
-         const response = await fetch("http://localhost:3000/api/players", {
+         const response = await fetch("https://tagquestapi.fly.dev/api/players", {
             method: "POST",
             headers: {
                "content-type": "application/json",

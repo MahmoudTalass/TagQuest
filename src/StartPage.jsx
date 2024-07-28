@@ -7,7 +7,7 @@ export function StartPage() {
 
    useEffect(() => {
       async function fetchCall() {
-         const response = await fetch("http://localhost:3000/api/characters");
+         const response = await fetch("https://tagquestapi.fly.dev//api/characters");
          const json = await response.json();
 
          setCharacters(
